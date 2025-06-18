@@ -1,0 +1,3 @@
+сделать слайдер: Editor's picked
+
+https://github.com/Ilya616/blog-laravel-python41

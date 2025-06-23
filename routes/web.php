@@ -4,4 +4,7 @@ use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [IndexController::class, 'home']);
+Route::controller(IndexController::class)->group(function () {
+    Route::get('/', 'home');
+    Route::get('/category/{id?}', 'category');
+});

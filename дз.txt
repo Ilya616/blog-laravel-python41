@@ -1,3 +1,2 @@
-сделать слайдер: Editor's picked
-
-https://github.com/Ilya616/blog-laravel-python41
+1. стилизация ссылки категории (цвет)
+2. вывод автора для поста

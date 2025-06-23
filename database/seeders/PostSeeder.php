@@ -19,25 +19,29 @@ class PostSeeder extends Seeder
                 'title' => '9 Things I Love About Shaving My Head During Quarantine',
                 'short_content' => 'Sit nemore imperdiet elaboraret eu, commune inciderint mei no. Ex usu ignota eripuit oportere. Vis at choro oratio, vitae quodsi ei sit. Mei ne habeo legimus qualisque.',
                 'content' => 'text',
-                'post_img' => 'default.jpg'
+                'post_img' => 'default.jpg',
+                'category_id' => 1,
             ],
             [
                 'title' => 'Why We Need to Stop Talking About Food and Guilt',
                 'short_content' => 'Quo ex aeterno luptatum mnesarchum, an duis veri harum eam, mel ex diceret dolorum. Sed no causae dissentias, quo cu ridens gubergren voluptatibus.',
                 'content' => 'text',
-                'post_img' => 'default.jpg'
+                'post_img' => 'default.jpg',
+                'category_id' => 2,
             ],
             [
                 'title' => '30 Best Lifestyle Blogs to Follow in 2021',
                 'short_content' => 'Tempus ultricies augue luctus et ut suscipit. Morbi arcu, ultrices purus dolor erat bibendum sapien metus. Sit mi, pharetra, morbi arcu id. Pellentesque dapibus nibh augue senectus.',
                 'content' => 'text',
-                'post_img' => 'default.jpg'
+                'post_img' => 'default.jpg',
+                'category_id' => 3,
             ],
             [
                 'title' => '31 Best Lifestyle Blogs to Follow in 2021',
                 'short_content' => 'Tempus ultricies augue luctus et ut suscipit. Morbi arcu, ultrices purus dolor erat bibendum sapien metus. Sit mi, pharetra, morbi arcu id. Pellentesque dapibus nibh augue senectus.',
                 'content' => 'text',
-                'post_img' => 'default.jpg'
+                'post_img' => 'default.jpg',
+                'category_id' => 1,
             ],
 
         ];
@@ -48,6 +52,7 @@ class PostSeeder extends Seeder
                 'short_content' => $post['short_content'],
                 'content' => $post['content'],
                 'post_img' => $post['post_img'],
+                'category_id' => $post['category_id'],
             ]);
         }
 

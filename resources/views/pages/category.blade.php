@@ -48,7 +48,9 @@
                                                         <img src="assets/imgs/authors/author.jpg" alt="">
                                                     </a>
                                                     <div class="mb-0">
-                                                        <a href="page-author.html" tabindex="0"> <strong class="author-namge">Kate Adie</strong></a>
+                                                        <a href="page-author.html" tabindex="0"> <strong class="author-namge">
+                                                            {{ $post->author->name }}
+                                                        </strong></a>
                                                         <p class="post-on font-sm text-grey-400 mb-0">5 minutes ago</p>
                                                     </div>
                                                 </div>
@@ -176,74 +178,27 @@
                             </div>
                             <div class="post-block-list post-module-1">
                                 <ul class="list-post">
-                                    <li class="wow fadeIn animated">
-                                        <div class="d-flex latest-small-thumb">
-                                            <div class="post-thumb d-flex mr-15 border-radius-10 img-hover-scale overflow-hidden">
-                                                <a class="color-white" href="single.html" tabindex="0">
-                                                    <img src="assets/imgs/news/thumb-11.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content media-body align-self-center">
-                                                <h5 class="post-title mb-15 text-limit-3-row font-medium">
-                                                    <a href="single.html" tabindex="0">9 Things I Love About Shaving My Head During Quarantine</a>
-                                                </h5>
-                                                <div class="entry-meta meta-1 float-left font-sm">
-                                                    <span class="post-on has-dot">September 15, 2021</span>
+                                    @foreach($posts as $post)
+                                        <li class="wow fadeIn animated">
+                                            <div class="d-flex latest-small-thumb">
+                                                <div class="post-thumb d-flex mr-15 border-radius-10 img-hover-scale overflow-hidden">
+                                                    <a class="color-white" href="single.html" tabindex="0">
+                                                        <img src="assets/imgs/news/thumb-11.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="post-content media-body align-self-center">
+                                                    <h5 class="post-title mb-15 text-limit-3-row font-medium">
+                                                        <a href="single.html" tabindex="0">{{ $post->title }}</a>
+                                                    </h5>
+                                                    <div class="entry-meta meta-1 float-left font-sm">
+                                                        <span class="post-on has-dot">
+                                                            {{ App\Helpers\DataFormatCarbon::date($post->created_at) }}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="wow fadeIn animated">
-                                        <div class="d-flex latest-small-thumb">
-                                            <div class="post-thumb d-flex mr-15 border-radius-10 img-hover-scale overflow-hidden">
-                                                <a class="color-white" href="single.html" tabindex="0">
-                                                    <img src="assets/imgs/news/thumb-12.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content media-body align-self-center">
-                                                <h5 class="post-title mb-15 text-limit-3-row font-medium">
-                                                    <a href="single.html" tabindex="0">Where to Score the Best Travel Deals on Cyber Monday</a>
-                                                </h5>
-                                                <div class="entry-meta meta-1 float-left font-sm">
-                                                    <span class="post-on has-dot">November 12, 2021</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="wow fadeIn animated">
-                                        <div class="d-flex latest-small-thumb">
-                                            <div class="post-thumb d-flex mr-15 border-radius-10 img-hover-scale overflow-hidden">
-                                                <a class="color-white" href="single.html" tabindex="0">
-                                                    <img src="assets/imgs/news/thumb-13.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content media-body align-self-center">
-                                                <h5 class="post-title mb-15 text-limit-3-row font-medium">
-                                                    <a href="single.html" tabindex="0">5 Kinds of Food-Shamers You Will Encounter (and How to Deal)</a>
-                                                </h5>
-                                                <div class="entry-meta meta-1 float-left font-sm">
-                                                    <span class="post-on has-dot">April 10, 2021</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="wow fadeIn animated">
-                                        <div class="d-flex latest-small-thumb">
-                                            <div class="post-thumb d-flex mr-15 border-radius-10 img-hover-scale overflow-hidden">
-                                                <a class="color-white" href="single.html" tabindex="0">
-                                                    <img src="assets/imgs/news/thumb-4.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content media-body align-self-center">
-                                                <h5 class="post-title mb-15 text-limit-3-row font-medium">
-                                                    <a href="single.html" tabindex="0">12 Best Books to Read at the Beach (or Anywhere) This Summer</a>
-                                                </h5>
-                                                <div class="entry-meta meta-1 float-left font-sm">
-                                                    <span class="post-on has-dot">June 15, 2021</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

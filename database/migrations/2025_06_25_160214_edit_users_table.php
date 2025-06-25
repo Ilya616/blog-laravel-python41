@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->integer('category_id')->nullable();
-            $table->integer('author_id')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('role_id')->nullable();
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->dropColumn('category_id');
-            $table->dropColumn('author_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role_id');
         });
     }
 };

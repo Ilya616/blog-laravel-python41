@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->integer('category_id')->nullable();
-            $table->integer('author_id')->nullable();
+        Schema::create('role', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', length: 100);
         });
     }
 
@@ -22,9 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->dropColumn('category_id');
-            $table->dropColumn('author_id');
-        });
+        Schema::dropIfExists('role');
     }
 };

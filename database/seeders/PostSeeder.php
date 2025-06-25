@@ -21,6 +21,7 @@ class PostSeeder extends Seeder
                 'content' => 'text',
                 'post_img' => 'default.jpg',
                 'category_id' => 1,
+                'author_id' => 1,
             ],
             [
                 'title' => 'Why We Need to Stop Talking About Food and Guilt',
@@ -28,6 +29,7 @@ class PostSeeder extends Seeder
                 'content' => 'text',
                 'post_img' => 'default.jpg',
                 'category_id' => 2,
+                'author_id' => 1,
             ],
             [
                 'title' => '30 Best Lifestyle Blogs to Follow in 2021',
@@ -35,6 +37,7 @@ class PostSeeder extends Seeder
                 'content' => 'text',
                 'post_img' => 'default.jpg',
                 'category_id' => 3,
+                'author_id' => 2,
             ],
             [
                 'title' => '31 Best Lifestyle Blogs to Follow in 2021',
@@ -42,6 +45,7 @@ class PostSeeder extends Seeder
                 'content' => 'text',
                 'post_img' => 'default.jpg',
                 'category_id' => 1,
+                'author_id' => 2,
             ],
 
         ];
@@ -53,6 +57,7 @@ class PostSeeder extends Seeder
                 'content' => $post['content'],
                 'post_img' => $post['post_img'],
                 'category_id' => $post['category_id'],
+                'author_id' => $post['author_id'],
             ]);
         }
 

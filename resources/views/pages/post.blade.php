@@ -187,7 +187,8 @@
                     <div class="widget-header-2 position-relative mb-30">
                         <h3 class="mt-5 mb-30 font-heading">Leave a Reply</h3>
                     </div>
-                    <form class="form-contact comment_form" action="#" id="commentForm">
+                    <form class="form-contact comment_form" action="{{ url('/comment-request-form') }}" method="POST" id="commentForm">
+                        @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">

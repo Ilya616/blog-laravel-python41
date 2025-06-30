@@ -40,7 +40,7 @@
                                                 <a href="category.html" class="tag-category bg-brand-1 shadown-1 text-dark button-shadow hover-up-3" tabindex="0">{{ $post->category->title }}</a>
                                             </div>
                                             <h4 class="post-title mb-40">
-                                                <a class="" href="single.html">{{ $post->title }}</a>
+                                                <a class="" href="{{ url('/category/'.$post->category_id.'/post/'.$post->id) }}">{{ $post->title }}</a>
                                             </h4>
                                             <div class="d-flex">
                                                 <div class="post-meta-2 font-md d-flex w-70">

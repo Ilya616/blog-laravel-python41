@@ -25,9 +25,6 @@ class IndexController extends Controller
         // $role = Role::where("id", 1)->first();
         // dd($role->users);
 
-
-
-
         if($id){
             $posts = Category::where('id', $id)->first()->posts;
         }
@@ -41,4 +38,13 @@ class IndexController extends Controller
 
         return view('pages.category', compact('posts'));
     }
+
+    public function post($category_id, $post_id){
+
+        $post = Post::where('id',  $post_id)->first();
+
+        
+
+        return view('pages.post', compact('post'));
+    } 
 }

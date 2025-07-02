@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
                 'name' => 'required|min:2',
                 'comment' => 'required|min:2',
                 'email' => 'required|min:2',
-                'website' => 'required|min:2',
             ],[
                 "name.required" => "не заполнено обязательное поле",
                 "name.min" => "Минимальная длина 2 символа"

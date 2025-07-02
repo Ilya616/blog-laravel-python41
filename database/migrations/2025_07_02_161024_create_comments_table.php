@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->integer('category_id')->nullable();
+        Schema::create('comment', function (Blueprint $table) {
+            $table->id();
             $table->integer('author_id')->nullable();
-            $table->integer('views')->default(0);
+            $table->text('content');
+            $table->integer('parrent_id')->nullable();
+            $table->integer('post_id');
+            $table->string('link', length: 255)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -23,9 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('post', function (Blueprint $table) {
-            $table->dropColumn('category_id');
-            $table->dropColumn('author_id');
-        });
+        Schema::dropIfExists('comment');
     }
 };

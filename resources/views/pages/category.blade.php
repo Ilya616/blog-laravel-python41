@@ -55,6 +55,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-right post-list-icon align-self-center w-30">
+                                                    {{ $post->views }}
                                                     <a><i class="elegant-icon icon_ribbon_alt "></i></a>
                                                     <a><i class="elegant-icon icon_heart_alt "></i></a>
                                                 </div>

@@ -83,32 +83,42 @@
                     <div class="widget-header-2 position-relative mb-30">
                         <h3 class="mt-5 mb-30 font-heading">Comments</h3>
                     </div>
-                    <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="assets/imgs/authors/author-4.jpg" alt="">
-                                </div>
-                                <div class="desc">
-                                    <p class="comment">
-                                        Vestibulum euismod, leo eget varius gravida, eros enim interdum urna, non rutrum enim ante quis metus. Duis porta ornare nulla ut bibendum
-                                    </p>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <h5>
-                                                <a href="#">Rosie</a>
-                                            </h5>
-                                            <p class="date">6 minutes ago </p>
-                                        </div>
-                                        <div class="reply-btn">
-                                            <a href="#" class="btn-reply">Reply</a>
+
+                    @foreach($comments as $comment)
+                        <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;" id="comment_{{ $comment->id }}">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="assets/imgs/authors/author-3.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <p class="comment">
+                                            {{ $comment->content }}
+
+                                            <div>
+                                                @if($comment->link != null)
+                                                    <a href="{{ $comment->link }}" target="_blank">{{ $comment->link}} </a>
+                                                @endif
+                                           </div>
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    <a href="#">Danielle Steel</a>
+                                                </h5>
+                                                <p class="date">December 4, 2020 at 3:12 pm </p>
+                                            </div>
+                                            <div class="reply-btn">
+                                                <a href="#" class="btn-reply">Reply</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;">
+                    @endforeach
+
+                    <!-- <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -180,7 +190,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!--comment form-->
                 <div class="comment-form wow fadeIn animated pb-35" style="visibility: hidden; animation-name: none;">
@@ -200,6 +210,9 @@
                                     <input class="form-control" name="name" id="name" type="text" placeholder="Name">
                                 </div>
                             </div>
+
+                            <input class="form-control" name="post_id" id="post_id" type="hidden" value="{{ $post->id }}">
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control" name="email" id="email" type="email" placeholder="Email">

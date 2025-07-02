@@ -17,6 +17,7 @@ class RolesSeeder extends Seeder
             ['id' => 1, "name" => "user"],
             ['id' => 2, "name" => "author"],
             ['id' => 3, "name" => "admin"],
+            ['id' => 4, "name" => "guest"],
         ];
         foreach($roles as $role){
             DB::table('role')->insert([

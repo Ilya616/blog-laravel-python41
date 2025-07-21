@@ -109,7 +109,7 @@
                                                 <p class="date">December 4, 2020 at 3:12 pm </p>
                                             </div>
                                             <div class="reply-btn">
-                                                <a href="#" class="btn-reply">Reply</a>
+                                                <a href="#commentForm" data-id="{{ $comment->id }}" class="btn-reply">Reply</a>
                                             </div>
                                         </div>
                                     </div>
@@ -200,6 +200,10 @@
                     <form class="form-contact comment_form" action="{{ url('/comment-request-form') }}" method="POST" id="commentForm">
                         @csrf
                         <div class="row">
+
+                            <input class="form-control" name="parrent_id" id="parrent_id" type="hidden" value="">
+
+
                             <div class="col-12">
                                 <div class="form-group">
                                     <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
@@ -277,4 +281,16 @@
             </article>
         </div>
     </main>
+
+    <script>
+        let btns = document.querySelectorAll(".btn-reply");
+
+        for(let btn of btns){
+            btn.addEventListener('click', function(evt){
+                let formField = document.querySelector("#parrent_id");
+                formField.value = evt.target.getAttribute('data-id');
+            });
+        }
+
+    </script>
 @endsection

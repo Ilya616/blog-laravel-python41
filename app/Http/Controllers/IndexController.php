@@ -19,6 +19,10 @@ class IndexController extends Controller
         return view('pages.home', compact('posts'));
     }
 
+    public function test(){
+        dd($_GET['name']." ".$_GET['surname']);
+    }
+
     public function category($id = null){
 
         // $user = User::where("id", 2)->first();
@@ -87,7 +91,14 @@ class IndexController extends Controller
         $model = new Comment;
         $model->author_id = $user->id;
         $model->content = $request->comment;
-        $model->parrent_id = null;
+
+        if($request->parrent_id == ""){
+            $model->parrent_id = null;
+        }
+        else{
+            $model->parrent_id = $request->parrent_id;
+        }
+        
         $model->post_id = $request->post_id;
         $model->link = $request->website;
         $model->save();

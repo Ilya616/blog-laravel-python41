@@ -84,39 +84,11 @@
                         <h3 class="mt-5 mb-30 font-heading">Comments</h3>
                     </div>
 
-                    @foreach($comments as $comment)
-                        <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;" id="comment_{{ $comment->id }}">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="assets/imgs/authors/author-3.jpg" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <p class="comment">
-                                            {{ $comment->content }}
+                    @php 
+                        echo App\Helpers\Comments::render($post->id);
+                    @endphp
 
-                                            <div>
-                                                @if($comment->link != null)
-                                                    <a href="{{ $comment->link }}" target="_blank">{{ $comment->link}} </a>
-                                                @endif
-                                           </div>
-                                        </p>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <h5>
-                                                    <a href="#">Danielle Steel</a>
-                                                </h5>
-                                                <p class="date">December 4, 2020 at 3:12 pm </p>
-                                            </div>
-                                            <div class="reply-btn">
-                                                <a href="#commentForm" data-id="{{ $comment->id }}" class="btn-reply">Reply</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    
 
                     <!-- <div class="comment-list wow fadeIn animated" style="visibility: hidden; animation-name: none;">
                         <div class="single-comment justify-content-between d-flex">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Comments;
 use App\Http\Resources\PostResource;
 use App\Models\Category;
 use App\Models\Comment;
@@ -58,6 +59,7 @@ class IndexController extends Controller
         $model->save();
 
         $comments = Comment::where('post_id', $post->id)->get();
+
 
 
         // сделать ссылку на сайт не обязательной, вывести её ниже текста комментария, 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\IndexController;
 use App\Http\Middleware\CheckName;
@@ -7,6 +8,21 @@ use App\Http\Middleware\CheckSurname;
 use App\Http\Middleware\Test;
 use Illuminate\Support\Facades\Route;
 
+
+Route::controller(AdminController::class)->group(function () {
+    Route::prefix('/admin')->group(function () {
+        Route::middleware(['auth'])->group(function () {
+            Route::get('/', 'index')->name('dashboard');
+        });
+        
+
+        Route::get('/auth', 'auth')->name('login');
+        Route::post('/auth', 'authRequest');
+        Route::get('/registration', 'registration');
+        Route::post('/registration', 'registrationReqest')->name('registrationReqest');
+        Route::get('/logout', 'logout')->name('admin-logout');
+    });
+});
 
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'home');

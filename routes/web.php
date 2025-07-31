@@ -13,6 +13,9 @@ Route::controller(AdminController::class)->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::middleware(['auth'])->group(function () {
             Route::get('/', 'index')->name('dashboard');
+            Route::get('/profile', 'profile')->name('profile');
+            Route::post('/profile-load', 'profileLoad')->name('profileLoad');
+            Route::get('/delete-avatar', 'deleteAvatar')->name('delete-avatar');
         });
         
 

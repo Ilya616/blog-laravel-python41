@@ -7,11 +7,40 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index(){
         return view('pages.admin_index');
+    }
+
+    public function profileLoad(Request $request){
+
+        $path = Storage::disk('public')->put('avatars', $request->file('avatar'));
+        
+        User::where('id', Auth::id())->update(['avatar' => $path]);
+        
+        return redirect()->route('profile');
+    }
+
+    public function deleteAvatar(Request $request){
+
+        if(Auth::user()->avatar != 'avatars/user.svg'){
+            // Storage::delete(Storage::url(Auth::user()->avatar));
+
+            Storage::disk('public')->delete(Auth::user()->avatar);
+            User::where('id', Auth::id())->update(['avatar' => 'avatars/user.svg']);
+        }
+        
+       
+        return redirect()->route('profile');
+    }
+
+    public function profile(){
+        $user = Auth::user();
+        $path = Storage::url($user->avatar);
+        return view('pages.admin_profile', compact('path'));
     }
 
     public function auth(){
@@ -25,12 +54,14 @@ class AdminController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+
  
         if (Auth::attempt($credentials)) {
+            
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');

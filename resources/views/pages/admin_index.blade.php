@@ -1167,6 +1167,87 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.0/dist/apexcharts.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.6.6/dragula.min.js" referrerpolicy="origin"></script>
     <script src="/assets-admin/js/main.js"></script>
+
+	<script>
+		
+
+		let barOptions = {
+			series: [{
+				data: [40, 31, 40, 10, 40, 36, 32]
+			}],
+			chart: {
+				height: 250,
+				type: 'bar',
+				toolbar: {
+					show: false,
+				},
+			},
+			colors: ["#AB54DB26"],
+			plotOptions: {
+			bar: {
+				columnWidth: 50,
+				borderRadius: 12,
+			}
+			},
+			dataLabels: {
+			enabled: false,
+			},
+			
+			xaxis: {
+				categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+				position: 'bottom',
+				axisBorder: {
+					show: false
+				},
+				axisTicks: {
+					show: false
+				},
+				crosshairs: {
+					show: false,
+				},
+				tooltip: {
+					enabled: false,
+				}
+			},
+			yaxis: {
+				axisBorder: {
+					show: false
+				},
+				axisTicks: {
+					show: false,
+				},
+				labels: {
+					show: false,
+				},
+			},
+
+			grid: {
+				show: false,
+				padding: { left: -20, right: -20, top: 0, bottom: 0 },
+			},
+
+			tooltip: {
+				enabled: true,
+
+				custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+					// Calculate the percentage based on the max value
+					let value = w.globals.series[seriesIndex][dataPointIndex]
+					var maxValue = Math.max(...series[0]);
+					var percentage = ((value / maxValue) * 10).toFixed(0);
+
+					return '<div class="custom-tooltip">' +
+					'<span class="custom-tooltip__title">' + percentage + '%</span>' +
+					'<span class="custom-tooltip__subtitle">' + value + ' Visitors</span>' +
+					'</div>';
+				},
+			},
+
+		};
+
+		let barChartContainer = document.querySelector("#column-chart");
+		let barChart = barChartContainer && new ApexCharts(barChartContainer, barOptions);
+		barChart && barChart.render();
+	</script>
     <!-- endinject-->
 </body>
 

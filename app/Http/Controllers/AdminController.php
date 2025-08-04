@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     public function index(){
-        return view('pages.admin_index');
+        $posts = json_encode(Post::select('id', 'title', 'views')->get());
+        
+        
+        return view('pages.admin_index', compact('posts'));
     }
 
     public function profileLoad(Request $request){

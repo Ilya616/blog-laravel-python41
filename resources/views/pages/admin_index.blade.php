@@ -1168,12 +1168,17 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.6.6/dragula.min.js" referrerpolicy="origin"></script>
     <script src="/assets-admin/js/main.js"></script>
 
+
+
 	<script>
 		
+		let postsView = {!! $postsView !!}
+		let postsTitle = {!! $postsTitle !!}
+
 
 		let barOptions = {
 			series: [{
-				data: [40, 31, 40, 10, 40, 36, 32]
+				data: postsView
 			}],
 			chart: {
 				height: 250,
@@ -1194,7 +1199,7 @@
 			},
 			
 			xaxis: {
-				categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+				categories: postsTitle,
 				position: 'bottom',
 				axisBorder: {
 					show: false

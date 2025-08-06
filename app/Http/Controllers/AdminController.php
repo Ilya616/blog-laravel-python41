@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ExportPosts;
+use App\Jobs\ProcessUpdateUserDate;
+use App\Jobs\ProcessViewPosts;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -13,10 +16,15 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     public function index(){
-        $posts = json_encode(Post::select('id', 'title', 'views')->get());
+        $posts = ExportPosts::data();
+
+        // ProcessViewPosts::dispatch();
         
+        $postsTitle = json_encode($posts['postsTitle']);
+        $postsView = json_encode($posts['postsView']);
+
         
-        return view('pages.admin_index', compact('posts'));
+        return view('pages.admin_index', compact('postsTitle', 'postsView'));
     }
 
     public function profileLoad(Request $request){
@@ -61,6 +69,10 @@ class AdminController extends Controller
 
  
         if (Auth::attempt($credentials)) {
+
+            $user = Auth::user();
+
+            ProcessUpdateUserDate::dispatch($user);
             
             $request->session()->regenerate();
             return redirect()->route('dashboard');

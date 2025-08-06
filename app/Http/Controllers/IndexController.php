@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Comments;
 use App\Http\Resources\PostResource;
+use App\Jobs\ProcessViewPosts;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
@@ -54,16 +55,16 @@ class IndexController extends Controller
             return redirect('/404');
         }
 
-        $model = Post::find($post->id);
-        $model->views++;
-        $model->save();
+        // $model = Post::find($post->id);
+        // $model->views++;
+        // $model->save();
+
+        ProcessViewPosts::dispatch($post);
+        
 
         $comments = Comment::where('post_id', $post->id)->get();
 
 
-
-        // сделать ссылку на сайт не обязательной, вывести её ниже текста комментария, 
-        // чтобы она открывалась в новой вкладке при нажатии
         return view('pages.post', compact('post', 'comments'));
     } 
 
@@ -109,4 +110,7 @@ class IndexController extends Controller
         return redirect()->back()->withFragment('#comment_'.$model->id);
 
     }
+
+    // при авторизации пользователя подставлять актуальные дату и время в столбец updated_at
+    // сделать через отдельный воркер
 }
